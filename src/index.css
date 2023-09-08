@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* fonts */
+
+@font-face {
+    font-family: "Black regular";
+    src: local("Cera Round Pro Black Regular"),
+      url("./assets/font/FONTSPRINGDEMO-CeraRoundProBlackRegular.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "bold";
+    src: local("Cera Round Pro Bold"),
+      url("./assets/font/FONTSPRINGDEMO-CeraRoundProBold.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "light";
+    src: local("Cera Round Pro Light"),
+      url("./assets/font/FONTSPRINGDEMO-CeraRoundProLightRegular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "medium";
+    src: local("Cera Round Pro Medium"),
+      url("./assets/font/FONTSPRINGDEMO-CeraRoundProMediumRegular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "regular";
+    src: local("Cera Round Pro Regular"),
+      url("./assets/font/FONTSPRINGDEMO-CeraRoundProRegular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "thin";
+    src: local("Cera Round Pro Thin"),
+      url("./assets/font/FONTSPRINGDEMO-CeraRoundProThinRegular.woff") format("woff");
+  }
+
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "regular", sans-serif;
+}
+
+body{
+  background-color: white;
+}
