@@ -1,5 +1,4 @@
 import { icons } from "../constants/data";
-
 import { useState } from "react";
 import Search from "./Search";
 import Category from "./Category";
@@ -8,33 +7,49 @@ import Icons from "./Icons";
 
 function Main() {
   const [sortBy, setSortBy] = useState("featured");
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const [filteredIcons, setFilteredIcons] = useState(icons);
+  // ----------- Input Filter -----------
+  const [query, setQuery] = useState("");
 
-  function handleCategoryClick(category) {
-    filterFunction(category);
+  const filteredItems = icons.filter(
+    (icon) => icon.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  );
+
+  function filteredData(icons, selected, query) {
+    let filteredIcons = icons;
+
+    // Filtering Input Items
+    if (query) {
+      filteredIcons = filteredItems;
+    }
+
+    // Applying selected filter
+    if (selected) {
+      filteredIcons = filteredIcons.filter(
+        ({ category, name, style }) =>
+          category === selected || name === selected || style === selected
+      );
+    }
+
+    return filteredIcons;
   }
 
-  const filterFunction = (name) => {
-    if (icons.length > 1) {
-      const filter = icons.filter((icon) => icon.category === name);
-      setFilteredIcons(filter);
-    }
-  };
+  const result = filteredData(icons, selectedCategory, query);
 
   return (
     <>
       <section className="flex flex-col justify-between items-center pt-8">
-        <Search />
+        <Search setQuery={setQuery} />
         <Category
-          handleCategoryClick={handleCategoryClick}
           sortBy={sortBy}
           setSortBy={setSortBy}
+          setSelectedCategory={setSelectedCategory}
         />
       </section>
       <section className="bg-slate-100 flex justify-start items-start px-12 py-8 text-sm text-slate-600">
-        <SubCategory />
-        <Icons sortBy={sortBy} filteredIcons={filteredIcons} />
+        <SubCategory setSelectedCategory={setSelectedCategory} />
+        <Icons sortBy={sortBy} result={result} />
       </section>
     </>
   );

@@ -1,11 +1,12 @@
 import { AiOutlineSearch, AiOutlineFileSearch } from "react-icons/ai";
-function Search() {
+function Search({ setQuery }) {
   return (
     <div className="relative">
       <input
         type="text"
         placeholder="Search 26,233 icons..."
         className="border-2 border-slate-800 rounded-full py-5 w-[780px] focus:ring-4 ring-blue-400 px-16 font-bold placeholder:font-normal"
+        onChange={(e) => setQuery(e.target.value)}
       />
       <span className="text-3xl absolute top-5 left-6">
         <AiOutlineSearch />
