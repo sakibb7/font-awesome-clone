@@ -1,13 +1,13 @@
 import { FaIcons, FaFontAwesomeFlag } from "react-icons/fa";
 import { FaBolt } from "react-icons/fa6";
 
-function Category({ sortBy, setSortBy, setSelectedCategory }) {
+function Category({ sortBy, setSortBy, handleFilterButtonClick }) {
   return (
     <div className="flex justify-center items-center gap-20">
       <div className="flex justify-start items-center gap-8 pt-16">
         <div
           className="hover:text-blue-500 pb-4 px-8 cursor-pointer border-b-4 border-b-transparent hover:border-b-4 hover:border-blue-500"
-          onClick={() => setSelectedCategory("classic")}
+          onClick={() => handleFilterButtonClick("classic")}
         >
           <span className="text-4xl ">
             <FaIcons />
@@ -16,7 +16,7 @@ function Category({ sortBy, setSortBy, setSelectedCategory }) {
         </div>
         <div
           className="hover:text-blue-500 pb-4 px-8 cursor-pointer border-b-4 border-b-transparent hover:border-b-4 hover:border-blue-500"
-          onClick={() => setSelectedCategory("sharp")}
+          onClick={() => handleFilterButtonClick("sharp")}
         >
           <span className="text-4xl">
             <FaIcons />
@@ -25,7 +25,7 @@ function Category({ sortBy, setSortBy, setSelectedCategory }) {
         </div>
         <div
           className="hover:text-blue-500 pb-4 px-8 cursor-pointer border-b-4 border-b-transparent hover:border-b-4 hover:border-blue-500"
-          onClick={() => setSelectedCategory("brand")}
+          onClick={() => handleFilterButtonClick("brand")}
         >
           <span className="text-4xl">
             <FaFontAwesomeFlag />
@@ -34,7 +34,7 @@ function Category({ sortBy, setSortBy, setSelectedCategory }) {
         </div>
         <div
           className="hover:text-blue-500 pb-4 px-8 cursor-pointer border-b-4 border-b-transparent hover:border-b-4 hover:border-blue-500"
-          onClick={() => setSelectedCategory("free")}
+          onClick={() => handleFilterButtonClick("free")}
         >
           <span className="text-4xl">
             <FaBolt />

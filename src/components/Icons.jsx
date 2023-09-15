@@ -1,16 +1,23 @@
 import { AiOutlineRight } from "react-icons/ai";
 
-function Icons({ sortBy, result }) {
+function Icons({ sortBy, uniqueFilteredIcons, selectedFilters }) {
   return (
     <main className="w-full px-8">
       <div className="pb-8">
-        <p className="text-xl font-bold text-slate-900">
-          {result.length} Icons
+        <p className="text-xl font-bold text-slate-900 flex justify-start items-center gap-8">
+          {uniqueFilteredIcons.length} Icons{" "}
+          <div className="flex justify-start items-center gap-4 text-sm font-normal">
+            {selectedFilters.map((item, idx) => (
+              <button key={idx} className="bg-[#fff] px-6 py-1 rounded-full">
+                {item}{" "}
+              </button>
+            ))}
+          </div>
         </p>
       </div>
       <div className="grid grid-cols-6 gap-8 transition-all duration-300">
         {sortBy === "featured" &&
-          result.map(({ id, icon, name }) => (
+          uniqueFilteredIcons.map(({ id, icon, name }) => (
             <div
               key={id}
               className="bg-[#ffff] hover:bg-yellow-400 duration-300 flex flex-col justify-center items-center py-12 rounded-xl gap-4"
@@ -20,7 +27,7 @@ function Icons({ sortBy, result }) {
             </div>
           ))}
         {sortBy === "alphabetically" &&
-          result
+          uniqueFilteredIcons
             .slice()
             .sort((a, b) => a.name.localeCompare(b.name))
             .map(({ id, icon, name }) => (
